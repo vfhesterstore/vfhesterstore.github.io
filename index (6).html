@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Player Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      text-align: center;
+    }
+    input {
+      padding: 10px;
+      width: 80%;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+    }
+    button {
+      padding: 10px 20px;
+      background: #ffffff;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  
+    .logo {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+</style>
+</head>
+<body>
+<div class="logo fade-in">vF Hester's Store</div>
+
+<div class="logo fade-in">Diamond Store</div>
+
+  <h1>Enter Player Info</h1>
+  <input type="text" id="playerId" placeholder="Player ID"><br>
+  <input type="text" id="serverId" placeholder="Server"><br>
+  <button onclick="saveInfo()">Continue</button>
+
+  <script>
+    function saveInfo() {
+      const playerId = document.getElementById("playerId").value;
+      const serverId = document.getElementById("serverId").value;
+      if (!playerId || !serverId) {
+        alert("Please enter both Player ID and Server.");
+        return;
+      }
+      localStorage.setItem("playerId", playerId);
+      localStorage.setItem("serverId", serverId);
+      window.location.href = "recharge.html";
+    }
+  </script>
+</body>
+</html>
