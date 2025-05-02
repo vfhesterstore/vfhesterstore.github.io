@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MLBB Diamond Recharge</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: url('https://i.imgur.com/HYzL4Oa.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00eaff;
+      text-shadow: 2px 2px 5px #000;
+    }
+
+    .item {
+      background: rgba(0, 0, 0, 0.7);
+      margin: 12px 0;
+      padding: 15px;
+      border: 1px solid #00eaff;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      box-shadow: 0 0 10px #00eaff44;
+    }
+
+    .item span {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
+
+    .btn {
+      background: #00eaff;
+      color: #000;
+      border: none;
+      padding: 10px 16px;
+      margin: 5px 5px 0 0;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .btn:hover {
+      background: #00b8d4;
+    }
+
+    .cart {
+      margin-top: 30px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00eaff55;
+    }
+
+    .cart h2 {
+      margin-top: 0;
+      color: #00eaff;
+      text-shadow: 1px 1px 2px #000;
+    }
+
+    .cart ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .cart li {
+      margin-bottom: 8px;
+    }
+
+    p.footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #ccc;
+      text-shadow: 1px 1px #000;
+    }
+  </style>
+</head>
+<body>
+  <h1>MLBB Diamond Recharge</h1>
+
+  <div class="item">
+    <span>11💎</span>
+    ₹20
+    <div>
+      <a class="btn" href="upi://pay?pa=winnergame9@oksbi&pn=WinnerGame&am=20&cu=INR">Pay</a>
+      <button class="btn" onclick="addToCart('11💎', 20)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>22💎</span>
+    ₹40
+    <div>
+      <a class="btn" href="upi://pay?pa=winnergame9@oksbi&pn=WinnerGame&am=40&cu=INR">Pay</a>
+      <button class="btn" onclick="addToCart('22💎', 40)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="item">
+    <span>Weekly Diamond Pass</span>
+    ₹135
+    <div>
+      <a class="btn" href="upi://pay?pa=winnergame9@oksbi&pn=WinnerGame&am=135&cu=INR">Pay</a>
+      <button class="btn" onclick="addToCart('Weekly Diamond Pass', 135)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="cart" id="cart">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p id="total">Total: ₹0</p>
+    <button class="btn" onclick="clearCart()">Clear Cart</button>
+  </div>
+
+  <p class="footer">Payment Method: Google Pay (GPay)<br>UPI: winnergame9@oksbi</p>
+
+  <script>
+    const cart = [];
+
+    function addToCart(item, price) {
+      cart.push({ item, price });
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById('cart-items');
+      const totalText = document.getElementById('total');
+      cartList.innerHTML = '';
+      let total = 0;
+      cart.forEach(({ item, price }) => {
+        const li = document.createElement('li');
+        li.textContent = `${item} - ₹${price}`;
+        cartList.appendChild(li);
+        total += price;
+      });
+      totalText.textContent = `Total: ₹${total}`;
+    }
+
+    function clearCart() {
+      cart.length = 0;
+      updateCart();
+    }
+  </script>
+</body>
+</html>
